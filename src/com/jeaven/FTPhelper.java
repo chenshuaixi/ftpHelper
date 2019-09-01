@@ -79,8 +79,16 @@ public class FTPhelper {
 	//Test
 	public static void main(String[] args) {
 		FTPhelper ftPhelper = new FTPhelper();
-		File file = new File("C:/Users/jeave/Desktop/test.txt");
-		String status = ftPhelper.uploadFile("test", file, "aaa.txt");
+		File file = new File("C:/Users/jeave/Desktop/test1.txt");
+		if(!file.exists()) {
+			try {
+				file.createNewFile();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		String savedFileName = "bbb.txt"; 
+		String status = ftPhelper.uploadFile("test", file, savedFileName);
 		System.out.println(status);
 	}
 	
