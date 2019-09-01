@@ -52,7 +52,8 @@ public class FTPhelper {
 			ftpClient.setDataTimeout(defaultTimeout); 	//设置默认传输超时时间
 			ftpClient.setBufferSize(1024*1024);	//设置缓冲区1M
 			//判断是否存在指定的文件路径
-			if(!JudgeHasFileDir(ftpClient, savedPath)) return "不存在指定的文件夹路径";
+			//if(!JudgeHasFileDir(ftpClient, savedPath)) return "不存在指定的文件夹路径";
+			while(!JudgeHasFileDir(ftpClient, savedPath));	//如果ftp服务器下不存在指定的文件夹，就一直循环
 			//切换工作目录到保存的路径下面，如果不存在就创建一个目录
 			boolean isFileDirExisted = ftpClient.changeWorkingDirectory(savedPath);
 			if(isFileDirExisted == false) {   //如果不存在就创造一个路径，切换工作目录
@@ -88,8 +89,12 @@ public class FTPhelper {
 		try {
 			FTPFile[] ftpFiles = ftpClient.listFiles();
 			for(FTPFile file : ftpFiles) {
-				if(file.isDirectory() && file.getName().equals(FileDirName)) {
-					return true;
+				if(file.isDirectory()) {
+					if(file.getName().equals(FileDirName)) return true;
+					else {
+						ftpClient.changeWorkingDirectory(file.getName());
+						JudgeHasFileDir(ftpClient, FileDirName);
+					}
 				} else {
 					continue;
 				}
