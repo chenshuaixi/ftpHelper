@@ -1,5 +1,5 @@
 # ftpHelper
-抢先向ftp服务器上传指定命名的文件夹  
+抢先向ftp服务器上传指定命名的文件     
 
 使用方式：  
 修改源程序中的ftp的ip,port,username,password等参数，再将源文件及其依赖库打包为jar文件，然后运行如下：  
