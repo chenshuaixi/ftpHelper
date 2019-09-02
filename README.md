@@ -1,7 +1,8 @@
 # ftpHelper
 抢先向ftp服务器上传指定命名的文件夹  
 
-使用方式：将源文件及其依赖库打包为jar文件，然后运行如下：  
+使用方式：  
+修改源程序中的ftp的ip,port,username,password等参数，再将源文件及其依赖库打包为jar文件，然后运行如下：  
 java -jar param1 parma2 parma3  
 参数解释:   
 param1 --- 本地待上传文件的绝对地址，例如: C:\Users\jeave\Desktop\test.xls  
