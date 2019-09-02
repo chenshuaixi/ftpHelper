@@ -148,8 +148,11 @@ public class FTPhelper {
 				e.printStackTrace();
 			}
 		}
+		long begin_time = System.currentTimeMillis();
 		String status = ftPhelper.uploadFile(savedPath, file, savedFileName);
+		long end_time = System.currentTimeMillis();
 		System.out.println(status);
+		System.out.println("program run time is: " + (end_time-begin_time) + " ms");
 	}
 	
 }
