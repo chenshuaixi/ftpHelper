@@ -22,11 +22,11 @@ public class FTPhelper {
 	//配置ftp的参数
 	static {
 		try {  
-			host = "127.0.0.1";
-			port = 8888;
-			username = "ftpUser";
+			host = "202.38.246.199";
+			port = 2100;
+			username = "wang_lin_ge";
 			password = "123456";
-			defaultTimeout = 30000;
+			defaultTimeout = 3600000;  //设置超时时间为1小时
 			LOCAL_CHARSET = "GBK";  //初始默认的编码是本地的GBK编码
 			FTP_REQURED_CHARSET = "iso-8859-1";
 			
@@ -105,7 +105,7 @@ public class FTPhelper {
 			ftpClient.enterLocalPassiveMode();	//采取被动传输模式
 			ftpClient.setDataTimeout(defaultTimeout); 	//设置默认传输超时时间
 			ftpClient.setBufferSize(1024*1024);	//设置缓冲区1M
-			while(!JudgeHasFileDir(ftpClient, savedDir1));	//如果ftp服务器下不存在指定的文件夹，就一直循环
+			//while(!JudgeHasFileDir(ftpClient, savedDir1));	//针对性的优化
 			ftpClient.changeWorkingDirectory(savedDir1);
 			while(!JudgeHasFileDir(ftpClient, savedDir2));	//如果ftp服务器下不存在指定的文件夹，就一直循环
 			ftpClient.changeWorkingDirectory(savedDir2);
